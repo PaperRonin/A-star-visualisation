@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #fff9ca;
+}
+
+.main {
+  width: 620px;
+  height: 620px;
+  margin: 10px auto 0;
+  border: 10px solid #242323;
+  font-size: 0;
+}
+
+.palitre {
+  width: 200px;
+  height: 106px;
+  border: 2px solid #242323;
+  margin-top: -620px ;
+  margin-left: 10px;
+  font-size: 20pt;
+}
+.palitre-button {
+text-align: center;
+border: 1px solid #242323;
+user-select: none;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #242323;
+  display: inline-block;
+}
