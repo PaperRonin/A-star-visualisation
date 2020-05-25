@@ -19,14 +19,15 @@ body {
   width: 200px;
   height: 106px;
   border: 2px solid #242323;
-  margin-top: -620px ;
+  margin-top: -620px;
   margin-left: 10px;
   font-size: 20pt;
 }
+
 .palitre-button {
-text-align: center;
-border: 1px solid #242323;
-user-select: none;
+  text-align: center;
+  border: 1px solid #242323;
+  user-select: none;
 }
 
 .cell {
@@ -34,4 +35,15 @@ user-select: none;
   height: 30px;
   border: 1px solid #242323;
   display: inline-block;
+}
+
+#start {
+  background: green;
+}
+
+#end {
+  background: red;
+}
+#wall {
+  background: grey;
 }

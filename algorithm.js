@@ -1,0 +1,3 @@
+function startSearch(){
+inProgress = true;
+}
