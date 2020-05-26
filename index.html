@@ -16,9 +16,11 @@
     <div class="palitre-button" style="background-color:crimson" onmousedown="changeColor(this,'crimson'),  setPaintColor('red')" onmouseup="changeColor(this,'crimson')">End point</div>
     <div class="palitre-button" style="background-color:grey" onmousedown="changeColor(this,'grey'),  setPaintColor('grey')" onmouseup="changeColor(this,'grey')">Walls</div>
   </div>
-  <button style="background-color:white; margin-top: 30px; margin-left: 10px; width: 200px;height:50px" onclick="startSearch()">Start</button>
+  <div id="brush" style="text-align: center;">Selected brush</div>
+  <button id="startBttn" onclick="startSearch()">Start</button>
   <script src="script.js"></script>
   <script src="algorithm.js"></script>
+  <script src="priorityQueue.js"></script>
 </body>
 
 </html>
