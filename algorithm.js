@@ -34,7 +34,7 @@ function AStarSearch(start, goal) {
   frontier.push(start);
   start.cost_so_far = 0;
   let count = 0;
-  while (!frontier.isEmpty() && count < 900) {
+  while (!frontier.isEmpty()) {
     current = frontier.pop();
     count++;
 
@@ -50,7 +50,7 @@ function AStarSearch(start, goal) {
       }
       start.type = 'start';
       draw();
-      return current.cost_so_far;
+      return goal.cost_so_far;
     }
 
     neighbors(current).forEach(next => {
@@ -66,6 +66,8 @@ function AStarSearch(start, goal) {
     });
     current.type = 'visited';
   }
+  start.type = 'start';
+  draw();
   return -1;
 }
 
@@ -74,7 +76,7 @@ function dijkstraSearch(start, goal) {
   frontier.push(start);
   start.cost_so_far = 0;
   let count = 0;
-  while (!frontier.isEmpty() && count < 900) {
+  while (!frontier.isEmpty()) {
     current = frontier.pop();
     count++;
 
@@ -89,7 +91,7 @@ function dijkstraSearch(start, goal) {
       }
       start.type = 'start';
       draw();
-      return current.cost_so_far;
+      return goal.cost_so_far;
     }
 
     neighbors(current).forEach(next => {
@@ -105,6 +107,8 @@ function dijkstraSearch(start, goal) {
     });
     current.type = 'visited';
   }
+  start.type = 'start';
+  draw();
   return -1;
 }
 
@@ -113,7 +117,7 @@ function heuristicSearch(start, goal) {
   frontier.push(start);
   start.cost_so_far = 0;
   let count = 0;
-  while (!frontier.isEmpty() && count < 900) {
+  while (!frontier.isEmpty() ) {
     current = frontier.pop();
     count++;
 
@@ -129,7 +133,7 @@ function heuristicSearch(start, goal) {
       }
       start.type = 'start';
       draw();
-      return current.cost_so_far;
+      return goal.cost_so_far;
     }
 
     neighbors(current).forEach(next => {
@@ -143,5 +147,7 @@ function heuristicSearch(start, goal) {
     });
     current.type = 'visited';
   }
+  start.type = 'start';
+  draw();
   return -1;
 }

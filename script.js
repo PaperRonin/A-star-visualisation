@@ -110,17 +110,24 @@ function draw() {
 
 async function startSearch() {
   inProgress = true;
+  let pWeight;
   switch (choosedAlg) {
     case 1:
-      AStarSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
+      pWeight = AStarSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
       break;
     case 2:
-      dijkstraSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
+      pWeight = dijkstraSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
       break;
     case 3:
-      heuristicSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
+      pWeight = heuristicSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
       break;
 
+  }
+  let pathWeight = document.getElementById('weights');
+  if (pWeight === -1) {
+    pathWeight.innerHTML = "Can't find a path!";
+  }else {
+    pathWeight.innerHTML = "Path weight: " + pWeight;
   }
   let button = document.getElementById('startBttn');
   button.innerHTML = 'Clear';

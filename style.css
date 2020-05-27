@@ -55,6 +55,15 @@ body {
   text-align: center;
 }
 
+#weights {
+  background-color: white;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 200px;
+  height: 50px
+  text-align: center;
+}
+
 #start {
   background: green;
 }
