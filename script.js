@@ -124,10 +124,13 @@ async function startSearch() {
 
   }
   let pathWeight = document.getElementById('weights');
+  let itercount = document.getElementById('itercount');
   if (pWeight === -1) {
+    itercount.innerHTML = "OwO";
     pathWeight.innerHTML = "Can't find a path!";
-  }else {
+  } else {
     pathWeight.innerHTML = "Path weight: " + pWeight;
+    itercount.innerHTML = "Number of iterations: " + count;
   }
   let button = document.getElementById('startBttn');
   button.innerHTML = 'Clear';

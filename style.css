@@ -33,8 +33,8 @@ body {
 .algBttn{
   background-color: white;
   margin-top: 10px;
-  margin-left: 10px;
-  width: 57px;
+  margin-left: 5px;
+  width: 65px;
   height: 25px
 }
 
@@ -56,6 +56,15 @@ body {
 }
 
 #weights {
+  background-color: white;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 200px;
+  height: 50px
+  text-align: center;
+}
+
+#itercount {
   background-color: white;
   margin-top: 10px;
   margin-left: 10px;

@@ -5,6 +5,8 @@ function sleep(milliseconds) {
     currentDate = Date.now();
   } while (currentDate - date < milliseconds);
 }
+
+var count;
 let correction = 0.000001;
 
 function heuristic(a, b) {
@@ -33,7 +35,7 @@ function AStarSearch(start, goal) {
   frontier = new PriorityQueue();
   frontier.push(start);
   start.cost_so_far = 0;
-  let count = 0;
+  count = 0;
   while (!frontier.isEmpty()) {
     current = frontier.pop();
     count++;
@@ -75,7 +77,7 @@ function dijkstraSearch(start, goal) {
   frontier = new PriorityQueue();
   frontier.push(start);
   start.cost_so_far = 0;
-  let count = 0;
+  count = 0;
   while (!frontier.isEmpty()) {
     current = frontier.pop();
     count++;
@@ -116,8 +118,8 @@ function heuristicSearch(start, goal) {
   frontier = new PriorityQueue();
   frontier.push(start);
   start.cost_so_far = 0;
-  let count = 0;
-  while (!frontier.isEmpty() ) {
+  count = 0;
+  while (!frontier.isEmpty()) {
     current = frontier.pop();
     count++;
 
