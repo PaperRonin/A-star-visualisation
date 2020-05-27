@@ -30,11 +30,20 @@ body {
   user-select: none;
 }
 
+.algBttn{
+  background-color: white;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 57px;
+  height: 25px
+}
+
 .cell {
   width: 30px;
   height: 30px;
   border: 1px solid #242323;
   display: inline-block;
+  text-align: center;
 }
 
 #brush {

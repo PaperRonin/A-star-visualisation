@@ -39,31 +39,106 @@ function AStarSearch(start, goal) {
     count++;
 
     if (current.type === 'goal') {
+      correction = 0.000001;
       while (!frontier.isEmpty()) {
         frontier.pop().type = 'enqueued';
       }
       current = current.came_from;
       while (current.came_from !== null) {
         current.type = 'path';
-        current = current.came_from; 
+        current = current.came_from;
       }
       start.type = 'start';
       draw();
       return current.cost_so_far;
     }
 
-    // console.log("visiting " + current.x + ":" + current.y);
-    // console.log("p " + current.priority);
     neighbors(current).forEach(next => {
       if (next.type !== 'visited' && next.type !== 'wall') {
         new_cost = current.cost_so_far + next.moveCost;
         if (next.cost_so_far === null || new_cost < next.cost_so_far) {
           next.cost_so_far = new_cost;
           next.priority = new_cost + heuristic(goal, next);
-          // console.log("push " +  next.x + ":" + next.y + " p: " +next.priority);
           frontier.push(next);
           next.came_from = current;
         }
+      }
+    });
+    current.type = 'visited';
+  }
+  return -1;
+}
+
+function dijkstraSearch(start, goal) {
+  frontier = new PriorityQueue();
+  frontier.push(start);
+  start.cost_so_far = 0;
+  let count = 0;
+  while (!frontier.isEmpty() && count < 900) {
+    current = frontier.pop();
+    count++;
+
+    if (current.type === 'goal') {
+      while (!frontier.isEmpty()) {
+        frontier.pop().type = 'enqueued';
+      }
+      current = current.came_from;
+      while (current.came_from !== null) {
+        current.type = 'path';
+        current = current.came_from;
+      }
+      start.type = 'start';
+      draw();
+      return current.cost_so_far;
+    }
+
+    neighbors(current).forEach(next => {
+      if (next.type !== 'visited' && next.type !== 'wall') {
+        new_cost = current.cost_so_far + next.moveCost;
+        if (next.cost_so_far === null || new_cost < next.cost_so_far) {
+          next.cost_so_far = new_cost;
+          next.priority = new_cost;
+          frontier.push(next);
+          next.came_from = current;
+        }
+      }
+    });
+    current.type = 'visited';
+  }
+  return -1;
+}
+
+function heuristicSearch(start, goal) {
+  frontier = new PriorityQueue();
+  frontier.push(start);
+  start.cost_so_far = 0;
+  let count = 0;
+  while (!frontier.isEmpty() && count < 900) {
+    current = frontier.pop();
+    count++;
+
+    if (current.type === 'goal') {
+      correction = 0.000001;
+      while (!frontier.isEmpty()) {
+        frontier.pop().type = 'enqueued';
+      }
+      current = current.came_from;
+      while (current.came_from !== null) {
+        current.type = 'path';
+        current = current.came_from;
+      }
+      start.type = 'start';
+      draw();
+      return current.cost_so_far;
+    }
+
+    neighbors(current).forEach(next => {
+      if (next.type !== 'visited' && next.type !== 'wall') {
+        next.cost_so_far = current.cost_so_far + next.moveCost;
+        next.priority = heuristic(goal, next);
+        frontier.push(next);
+        next.came_from = current;
+
       }
     });
     current.type = 'visited';

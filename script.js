@@ -3,7 +3,7 @@ let main = document.querySelector(".main");
 let PaintColor = "green";
 let goalPoint, startPoint;
 let inProgress = false;
-
+let choosedAlg = 1;
 Array.matrix = function(numrows, numcols, initial) {
   var arr = [];
   for (var i = 0; i < numrows; ++i) {
@@ -80,20 +80,28 @@ function draw() {
   let mainInnerHTML = "";
   for (let y = 0; y < map.length; y++) {
     for (let x = 0; x < map[y].length; x++) {
-      if (map[x][y].type === 'visited') {
-        mainInnerHTML += '<div class="cell" style="background: #9ef3c0" onclick="mark(this,' + x + ',' + y + ')"></div>';
-      } else if (map[x][y].type === 'enqueued') {
-        mainInnerHTML += '<div class="cell" style="background:  #5da1ff" onclick="mark(this,' + x + ',' + y + ')"></div>';
-      } else if (map[x][y].type === 'path') {
-        mainInnerHTML += '<div class="cell" style="background: #ffac4d" onclick="mark(this,' + x + ',' + y + ')"></div>';
-      } else if (map[x][y].type === 'wall') {
-        mainInnerHTML += '<div class="cell" style="background: grey" onclick="mark(this,' + x + ',' + y + ')"></div>';
-      } else if (map[x][y].type === 'start') {
-        mainInnerHTML += '<div class="cell" style="background: green" onclick="mark(this,' + x + ',' + y + ')"></div>';
-      } else if (map[x][y].type === 'goal') {
-        mainInnerHTML += '<div class="cell" style="background: red" onclick="mark(this,' + x + ',' + y + ')"></div>';
-      } else {
-        mainInnerHTML += '<div class="cell" onclick="mark(this,' + x + ',' + y + ')"></div>';
+
+      switch (map[x][y].type) {
+        case 'visited':
+          mainInnerHTML += '<div class="cell" style="background: #9ef3c0" onclick="mark(this,' + x + ',' + y + ')"></div>';
+          break;
+        case 'enqueued':
+          mainInnerHTML += '<div class="cell" style="background:  #5da1ff" onclick="mark(this,' + x + ',' + y + ')"></div>';
+          break;
+        case 'path':
+          mainInnerHTML += '<div class="cell" style="background: #ffac4d" onclick="mark(this,' + x + ',' + y + ')"></div>';
+          break;
+        case 'wall':
+          mainInnerHTML += '<div class="cell" style="background: grey" onclick="mark(this,' + x + ',' + y + ')"></div>';
+          break;
+        case 'start':
+          mainInnerHTML += '<div class="cell" style="background: green" onclick="mark(this,' + x + ',' + y + ')"></div>';
+          break;
+        case 'goal':
+          mainInnerHTML += '<div class="cell" style="background: red" onclick="mark(this,' + x + ',' + y + ')"></div>';
+          break;
+        default:
+          mainInnerHTML += '<div class="cell" onclick="mark(this,' + x + ',' + y + ')"></div>';
       }
     }
   }
@@ -102,7 +110,18 @@ function draw() {
 
 async function startSearch() {
   inProgress = true;
-  AStarSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
+  switch (choosedAlg) {
+    case 1:
+      AStarSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
+      break;
+    case 2:
+      dijkstraSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
+      break;
+    case 3:
+      heuristicSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
+      break;
+
+  }
   let button = document.getElementById('startBttn');
   button.innerHTML = 'Clear';
   button.setAttribute("onClick", "clearResult(1);");
@@ -123,8 +142,8 @@ async function clearResult(initial) {
   draw();
   let button = document.getElementById('startBttn');
   button.innerHTML = 'Start';
-  button.setAttribute("onClick", "startSearch();");
-    inProgress = false;
+  button.setAttribute("onClick", "startSearch(1);");
+  inProgress = false;
 }
 
 
