@@ -1,11 +1,3 @@
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
-
 var count;
 let correction = 0.000001;
 
@@ -137,14 +129,15 @@ function heuristicSearch(start, goal) {
       draw();
       return goal.cost_so_far;
     }
-
     neighbors(current).forEach(next => {
       if (next.type !== 'visited' && next.type !== 'wall') {
-        next.cost_so_far = current.cost_so_far + next.moveCost;
-        next.priority = heuristic(goal, next);
-        frontier.push(next);
-        next.came_from = current;
-
+        new_cost = current.cost_so_far + next.moveCost;
+        if (next.cost_so_far === null || new_cost < next.cost_so_far) {
+          next.cost_so_far = current.cost_so_far + next.moveCost;
+          next.priority = heuristic(goal, next);
+          frontier.push(next);
+          next.came_from = current;
+        }
       }
     });
     current.type = 'visited';
