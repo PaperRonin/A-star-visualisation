@@ -110,29 +110,31 @@ function draw() {
 
 async function startSearch() {
   inProgress = true;
+  let button = document.getElementById('startBttn');
+  button.innerHTML = 'In progress';
+  button.setAttribute("onClick", "");
   let pWeight;
   switch (choosedAlg) {
     case 1:
-      pWeight = AStarSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
+      pWeight = await AStarSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
       break;
     case 2:
-      pWeight = dijkstraSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
+      pWeight = await dijkstraSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
       break;
     case 3:
-      pWeight = heuristicSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
+      pWeight = await heuristicSearch(map[startPoint.x][startPoint.y], map[goalPoint.x][goalPoint.y]);
       break;
 
   }
   let pathWeight = document.getElementById('weights');
   let itercount = document.getElementById('itercount');
   if (pWeight === -1) {
-    itercount.innerHTML = "OwO";
+    itercount.innerHTML = "-";
     pathWeight.innerHTML = "Can't find a path!";
   } else {
     pathWeight.innerHTML = "Path weight: " + pWeight;
     itercount.innerHTML = "Number of iterations: " + count;
   }
-  let button = document.getElementById('startBttn');
   button.innerHTML = 'Clear';
   button.setAttribute("onClick", "clearResult(1);");
 }
@@ -157,8 +159,8 @@ async function clearResult(initial) {
 }
 
 
-map[0][0].type = 'start';
-map[6][6].type = 'goal';
-startPoint = new Point(0, 0);
-goalPoint = new Point(6, 6);
+map[3][3].type = 'start';
+map[10][2].type = 'goal';
+startPoint = new Point(3, 3);
+goalPoint = new Point(10, 2);
 draw();
