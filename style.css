@@ -8,69 +8,75 @@ body {
 }
 
 .main {
-  width: 620px;
-  height: 620px;
-  margin: 10px auto 0;
-  border: 10px solid #242323;
+  width: 45vmax;
+  height: 45vmax;
+  margin: 1% auto 0;
+  border: 1vmax solid #242323;
   font-size: 0;
 }
 
 .palitre {
-  width: 200px;
-  height: 106px;
-  border: 2px solid #242323;
-  margin-top: -620px;
-  margin-left: 10px;
-  font-size: 20pt;
+  width: 16vmax;
+  height: 10vmax;
+  border: 0.3vmax solid #242323;
+  margin-top: -35%;
+  margin-left: 1%;
+  font-size: 2vmax;
 }
 
 .palitre-button {
+  height: 33.5%;
   text-align: center;
-  border: 1px solid #242323;
+  border: 0.2vmax solid #242323;
   user-select: none;
 }
 
-.algBttn{
+.algBttn {
   background-color: white;
-  margin-top: 10px;
-  margin-left: 5px;
-  width: 65px;
-  height: 25px
+  margin-top: 1%;
+  margin-left: 1%;
+  width: 4.3vmax;
+  height: 3vmax;
+  text-align: center;
+  font-size: 0.8vmax;
 }
 
 .cell {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #242323;
+  width: 5%;
+  height: 5%;
+  border: 0.1vmax solid #242323;
   display: inline-block;
   text-align: center;
 }
 
 #brush {
   background-color: green;
-  margin-top: 10px;
-  margin-left: 10px;
-  width: 200px;
-  height: 50px
+  margin-top: 1%;
+  margin-left: 1%;
+  width: 16vmax;
+  height: 2vmax;
   text-align: center;
+  font-size: 1.5vmax;
 }
 
 #weights {
   background-color: white;
-  margin-top: 10px;
-  margin-left: 10px;
-  width: 200px;
-  height: 50px
+  margin-top: 1%;
+  margin-left: 1%;
+  width: 16vmax;
+  height: 2vmax;
   text-align: center;
+  font-size: 1.5vmax;
 }
 
 #itercount {
   background-color: white;
-  margin-top: 10px;
-  margin-left: 10px;
-  width: 200px;
-  height: 50px
+  margin-top: 1%;
+  margin-left: 1%;
+  width: 16vmax;
+  height: 5%;
   text-align: center;
+  font-size: 1.5vmax;
 }
 
 #start {
@@ -85,10 +91,75 @@ body {
   background: grey;
 }
 
-#startBttn{
+#startBttn {
   background-color: white;
-  margin-top: 30px;
-  margin-left: 10px;
-  width: 200px;
-  height: 50px
+  margin-top: 1%;
+  margin-left: 1%;
+  width: 16vmax;
+  height: 3vmax;
+  font-size: 1.5vmax;
+}
+
+@media screen and (max-width: 600px) {
+  .palitre {
+    width: 16vmax;
+    height: 10vmax;
+    border: 0.3vmax solid #242323;
+    margin-top: 5%;
+    margin-left: 35%;
+    font-size: 2vmax;
+  }
+
+  #itercount {
+    background-color: white;
+    margin-top: 1%;
+    margin-left: 35%;
+    width: 16vmax;
+    height: 5%;
+    text-align: center;
+    font-size: 1.5vmax;
+  }
+
+  #startBttn {
+    background-color: white;
+    margin-top: 1%;
+    margin-left: 35%;
+    width: 16vmax;
+    height: 3vmax;
+    font-size: 1.5vmax;
+  }
+
+  #brush {
+    background-color: green;
+    margin-top: 1%;
+    margin-left: 35%;
+    width: 16vmax;
+    height: 2vmax;
+    text-align: center;
+    font-size: 1.5vmax;
+  }
+
+  #weights {
+    background-color: white;
+    margin-top: 1%;
+    margin-left: 35%;
+    width: 16vmax;
+    height: 2vmax;
+    text-align: center;
+    font-size: 1.5vmax;
+  }
+
+  #firstalgbttn {
+    margin-left: 35%;
+  }
+
+  .algBttn {
+    background-color: white;
+    margin-top: 1%;
+    margin-left: 2%;
+    width: 4.3vmax;
+    height: 3vmax;
+    text-align: center;
+    font-size: 0.8vmax;
+  }
 }
